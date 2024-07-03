@@ -12,12 +12,12 @@ const perguntas = [
           "implementação de leis mais rigorosas para a proteção das florestas"]
     },
   
-    { // segundo objeto da lista de pergunta
+    {
         enunciado: "como podemos combater a desigualdade social de forma mais eficaz e sustentável?", 
-        alternativas: ["implementar programas de educação e formação profissional acessíveis a todos",
-                       "politícas de redistribuição de renda e oportunidades"]
+        alternativas: 
+      ["implementar programas de educação e formação profissional acessíveis a todos",
+        "politícas de redistribuição de renda e oportunidades"]
                     }
-                    
     
                 ];
     let atual = 0;
