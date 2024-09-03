@@ -5,33 +5,84 @@ const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
-    {
-        enunciado: "qual a melhor maneira de se combater o desmatamento?", 
-        alternativas: [
-          "reflorestamento de áreas degradadas",
-          "implementação de leis mais rigorosas para a proteção das florestas"]
-    },
-  
-    {
-        enunciado: "como podemos combater a desigualdade social de forma mais eficaz e sustentável?", 
-        alternativas: 
-      ["implementar programas de educação e formação profissional acessíveis a todos",
-        "politícas de redistribuição de renda e oportunidades"]
-                    }
-    
-                ];
-    let atual = 0;
-    let perguntaAtual;
-    
-  function mostraPergunta() {
-    perguntaAtual = perguntas[atual];
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativa.textContent = "";
-    mostraAlternativa();
-    
-  }
-function mostraAlternativa(){
-  for(const alternativa of perguntaAtual.alternativa){
-      cont 
-  }
+  {
+    enunciado: "TEXTO DA PERGUNTA 1",
+    alternativas: [
+        {
+            texto: "TEXTO DA ALTERNATIVA 1 DA PERGUNTA 1",
+            afirmacao: "AFIRMAÇÃO DA ALTERNATIVA 1 DA PERGUNTA 1"
+        },
+        {
+            texto: "TEXTO DA ALTERNATIVA 2 DA PERGUNTA 1",
+            afirmacao: "AFIRMAÇÃO DA ALTERNATIVA 2 DA PERGUNTA 1"
+        }
+
+    ]
+},
+{
+    enunciado: "TEXTO DA PERGUNTA 2",
+    alternativas: [
+        {
+            texto: "TEXTO DA ALTERNATIVA 1 DA PERGUNTA 2",
+            afirmacao: "AFIRMAÇÃO DA ALTERNATIVA 1 DA PERGUNTA 2"
+        },
+        {
+            texto: "TEXTO DA ALTERNATIVA 2 DA PERGUNTA 2",
+            afirmacao: "AFIRMAÇÃO DA ALTERNATIVA 2 DA PERGUNTA 2"
+        }
+
+    ]
+},
+{
+    enunciado: "TEXTO DA PERGUNTA 3",
+    alternativas: [
+        {
+            texto: "TEXTO DA ALTERNATIVA 1 DA PERGUNTA 3",
+            afirmacao: "AFIRMAÇÃO DA ALTERNATIVA 1 DA PERGUNTA 3"
+        },
+        {
+            texto: "TEXTO DA ALTERNATIVA 2 DA PERGUNTA 3",
+            afirmacao: "AFIRMAÇÃO DA ALTERNATIVA 2 DA PERGUNTA 3"
+        }
+
+    ]
 }
+];
+
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+
+function mostraPergunta() {
+if (atual >= perguntas.length) {
+    mostraResultado();
+    return;
+}
+perguntaAtual = perguntas[atual];
+caixaPerguntas.textContent = perguntaAtual.enunciado;
+caixaAlternativas.textContent = "";
+textoResultado.textContent = "";
+mostraAlternativas();
+}
+
+function mostraAlternativas() {
+for (const alternativa of perguntaAtual.alternativas) {
+    const botaoAlternativa = document.createElement("button");
+    botaoAlternativa.textContent = alternativa.texto;
+    botaoAlternativa.addEventListener("click", () => respostaSelecionada(alternativa));
+    caixaAlternativas.appendChild(botaoAlternativa);
+}
+}
+function respostaSelecionada(opcaoSelecionada) {
+const afirmacao = opcaoSelecionada.afirmacao;
+historiaFinal += afirmacao + " ";
+atual++
+mostraPergunta();
+}
+
+function mostraResultado() {
+caixaPerguntas.textContent = "Resumindo...";
+textoResultado.textContent = historiaFinal;
+caixaAlternativas.textContent = "";
+}
+mostraPergunta();
